@@ -1,0 +1,37 @@
+datasource db {
+  provider = "postgresql"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model HealthCheck {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+}
+
+model Property {
+  id          String   @id @default(cuid())
+  title       String
+  price       Int
+  address     String
+  city        String
+  state       String
+  zip         String
+  bedrooms    Int
+  bathrooms   Int
+  squareFeet  Int
+  listingDate DateTime @default(now())
+  media       Media[]
+}
+
+model Media {
+  id            String @id @default(cuid())
+  imageUrl      String
+  imagePublicId String
+  order         Int
+  propertyId    String
+  property      Property @relation(fields: [propertyId], references: [id])
+}
+
