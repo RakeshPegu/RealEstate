@@ -1,6 +1,5 @@
 "use client"
 import { useMemo, useState } from "react";
-import { Button } from "@/components/ui/button";
 import {
   FiSearch,
   FiMapPin,
@@ -12,6 +11,7 @@ import {
   FiChevronDown,
 } from "react-icons/fi";
 import { FaBath, FaBed } from "react-icons/fa";
+import { Button } from "@/app/components/ui/button";
 
 const properties = [
   {

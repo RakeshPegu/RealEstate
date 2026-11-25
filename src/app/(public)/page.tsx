@@ -1,11 +1,8 @@
-import Navbar from "./components/Navbar";
-import HeroBanner from "./components/HeroBanner";
-import SearchBar from "./components/SearchBar";
-import TrustStrip from "./components/TrustStrip";
-import FeaturedGrid from "./components/FeaturedGrid";
-import Footer from "./components/Footer";
-import AboutSection from "./components/AboutSection";
-import ContactPage from "./components/ContactPage";
+import AboutSection from "../components/AboutSection";
+import ContactPage from "../components/ContactPage";
+import FeaturedGrid from "../components/FeaturedGrid";
+import HeroBanner from "../components/HeroBanner";
+
 
 export const metadata = {
   title: "Real Estate Platform – Home",

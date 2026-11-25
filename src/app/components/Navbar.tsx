@@ -3,12 +3,14 @@
 
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { useUser, SignInButton, UserButton } from "@clerk/nextjs";
+
+import { Show, SignInButton, SignUpButton, UserButton } from '@clerk/nextjs'
 import brandLogo from "../../../public/zenit.png";
 import { useEffect, useState } from "react";
+import { Button } from "./ui/button";
+
 
 export default function Navbar() {
-  const { isSignedIn } = useUser();
   const pathname = usePathname();
   const router = useRouter()
   const [targetSection, setTargetSection] = useState<string | null>(null);
@@ -92,15 +94,18 @@ export default function Navbar() {
 
           {/* Authentication */}
           <div className="flex items-center space-x-4">
-            {isSignedIn ? (
-              <UserButton />
-            ) : (
-              <SignInButton>
-                <button className="rounded bg-primary-600 px-4 py-2 text-sm font-medium text-white hover:bg-primary-700">
-                  Sign in
-                </button>
-              </SignInButton>
-            )}
+            <Show when="signed-out">
+            <SignInButton mode="modal">
+              <Button className="bg-green-600 px-12 py-5 rounded-[30] transition-colors cursor-pointer">
+                Sign In
+              </Button>
+            </SignInButton>
+
+        </Show>
+        <Show when={'signed-in'}>
+          <UserButton/>
+        </Show>
+
           </div>
 
         </div>
