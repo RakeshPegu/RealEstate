@@ -1,6 +1,5 @@
 import { NextResponse } from 'next/server'
-import { prisma } from '@/lib/prisma'
-
+import {prisma} from '@/db'
 export async function GET() {
   let dbStatus = 'disconnected'
   let dbError: string | null = null
