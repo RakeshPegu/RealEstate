@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { prisma } from '@/lib/prisma';
 import { getAuth } from '@clerk/nextjs/server';
+import { prisma } from '@/db';
 
 /**
  * Admin: list all properties (paginated).
