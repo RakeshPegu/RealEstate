@@ -109,7 +109,7 @@ export default  function Navbar() {
                 <UserButton />
 
                 {isAdmin && (
-                  <Link href="/admin/overview" className="flex justify-center items-center font-sans text-md gap-2 bg-green-500 rounded-2xl py-2 px-4  text-white">
+                  <Link href="/admin/overview" className="flex justify-center items-center font-sans text-xs gap-2 bg-green-500 rounded-2xl py-2 px-4  text-white">
                     Dashboard
                     <MoveRight/>
                   </Link>

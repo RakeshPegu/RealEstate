@@ -50,7 +50,7 @@ type Property = {
 export default function FeaturedGrid(){
 
   return(
-    <section className="flex flex-col h-screen items-center mt-30 gap-15" id="properties">
+    <section className="flex flex-col h-full md:h-screen items-center mt-30 gap-15" id="properties">
       <div className="flex flex-row w-[95%] justify-between">
         <div className="">
           <h2>our listing</h2>
@@ -58,7 +58,7 @@ export default function FeaturedGrid(){
         </div>
         <Link href={'/properties'} className="bg-green-600 px-8 md:h-[50px] rounded-[30px] flex justify-center items-center text-white" >view listing →</Link>
       </div>
-      <div className="flex flex-row justify-center gap-4">
+      <div className="grid sm:grid-cols-2 grid-cols-1 md:grid-cols-5  justify-center  gap-4">
         <PropertiesCard/>
         <PropertiesCard/>
         <PropertiesCard/>

@@ -86,7 +86,7 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col">     
             {/* Page Content */}
-            <main className="relative z-10">  
+            <main className="relative z-10 overflow-x-hidden">  
                 <ClerkProvider>         
                {children}
                </ClerkProvider>       

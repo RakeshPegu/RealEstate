@@ -1,7 +1,9 @@
-"use client"
+
+"use client";
+
 import { useState } from "react";
 import { Button } from "@/app/components/ui/button";
-import Link from 'next/link'
+import Link from "next/link";
 import {
   FaLinkedin,
   FaFacebook,
@@ -24,46 +26,53 @@ export default function HeroBanner() {
   ];
 
   return (
-    <section className="bg-[url('/herobg.jpg')] relative bg-center bg-cover min-h-screen flex items-center justify-center" id="home">
-
+    <section
+      className="bg-[url('/herobg.jpg')] h-[145vh] sm:h-[130vh] md:h-[110vh]  lg:h-[105vh]  relative  bg-center bg-cover min-h-screen flex flex-col items-center justify-center"
+      id="home"
+    >
       {/* Hero Content */}
-      <div className="max-w-2xl px-4 absolute flex flex-col gap-10 top-40 md:gap-20 md:left-30">
+      <div className="max-w-2xl px-4 absolute flex flex-col gap-10   top-40 md:gap-8 md:left-30">
         <h1 className="text-5xl md:text-6xl flex flex-col font-bold text-white leading-[1.3]">
           LET US FIND A PLACE YOU CAN CALL HOME
         </h1>
 
         <div className="flex flex-row gap-5 md:gap-10">
-          <Link href={'/#contact'} className="bg-white/95 hover:bg-white/80 flex justify-center items-center rounded-full text-black h-12 w-40">
+          <Link
+            href="/#contact"
+            className="bg-white/95 hover:bg-white/80 flex justify-center items-center rounded-full text-black h-12 px-4 text-xs sm:w-40"
+          >
             Contact Us
           </Link>
 
-          <Link href={'/properties'} className="bg-green-600 text-white flex justify-center items-center rounded-full h-12 hover:bg-green-400 w-45">
+          <Link
+            href="/properties"
+            className="bg-green-600 text-white flex justify-center items-center rounded-full h-12 text-xs px-4  hover:bg-green-400 sm:w-45"
+          >
             Explore Properties
           </Link>
         </div>
-      </div>
-
       {/* Social Icons */}
-      <div className="absolute bottom-10 left-10 md:left-35">
-        <div className="flex flex-row gap-5">
+    
+        <div className="flex flex-row gap-10">
           {icons.map((item, index) => {
             const Icon = item.icon;
 
             return (
               <a href={item.href} key={index}>
-                <Icon size={24} className="text-gray-300 hover:text-white transition" />
+                <Icon size={24} className="text-white hover:text-white transition" />
               </a>
             );
           })}
         </div>
       </div>
 
+
+
       {/* Property Search */}
-      <div className="absolute bottom-15 left-10/14 -translate-x-1/2 w-[95%] max-w-[850px]">
+      <div className="absolute bottom-0 lg:bottom-12 md:-translate-4 lg:translate-x-25 lg:translate-y-12 w-[95%] max-w-[850px]">
 
         {/* Search Tabs */}
-        <div className="flex items-center gap-2 bg-white/10 backdrop-brightness-60 backdrop-blur-xs backdrop-grayscale  shadow-xl rounded-full w-fit p-2 mb-[-2px] relative z-10 ml-2">
-
+        <div className="flex items-center gap-2 bg-white/10 backdrop-brightness-60 backdrop-blur-xs backdrop-grayscale shadow-xl rounded-full w-fit p-2 mb-[-2px] relative z-10 ml-2">
           {["Buy", "Rent", "Off Plan"].map((tab) => (
             <Button
               key={tab}
@@ -82,9 +91,8 @@ export default function HeroBanner() {
         {/* Search Form */}
         <form
           onSubmit={(e) => e.preventDefault()}
-          className="bg-white/10 backdrop-blur-xl rounded-[25px] p-5 md:px-8 md:py-5 flex flex-col md:flex-row items-center gap-5 md:gap-6 shadow-xl"
+          className="bg-white/10 backdrop-blur-xl mb-4  rounded-[25px] p-5 md:px-8 md:py-5 flex flex-col md:flex-row items-center gap-5 md:gap-6 shadow-xl"
         >
-
           {/* Location */}
           <div className="flex flex-col gap-2 flex-1 w-full">
             <label className="text-white text-sm">Location</label>
@@ -148,7 +156,6 @@ export default function HeroBanner() {
               Search
             </Button>
           </div>
-
         </form>
       </div>
     </section>
