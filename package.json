@@ -12,13 +12,14 @@
   },
   "dependencies": {
     "@clerk/nextjs": "^7.9.23",
-    "@prisma/client": "^6.19.3",
+    "@prisma/adapter-neon": "^7.10.1",
+    "@prisma/client": "^7.10.1",
     "@radix-ui/react-slot": "^1.5.0",
     "@tailwindcss/postcss": "^4.3.4",
     "class-variance-authority": "^0.7.1",
     "cloudinary": "^2.11.0",
     "cn": "^0.5.2",
-    "dotenv": "^18.0.9",
+    "dotenv": "^18.0.10",
     "inngest": "^4.26.2",
     "lucide-react": "^1.67.0",
     "next": "16.4.3",
@@ -37,10 +38,11 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.4.3",
-    "prisma": "^6.19.3",
+    "prisma": "^7.10.1",
     "shadcn": "^4.23.0",
     "tailwindcss": "^4.3.4",
     "tailwindcss-animate": "^1.0.7",
+    "tsx": "^4.23.15",
     "typescript": "^5"
   }
 }

@@ -54,7 +54,7 @@ export default function FeaturedGrid(){
       <div className="flex flex-row w-[95%] justify-between">
         <div className="">
           <h2>our listing</h2>
-          <p className="text-2xl">featured Properties</p>
+          <Link href={'/properties'} className="text-2xl">featured Properties</Link>
         </div>
         <Link href={'/properties'} className="bg-green-600 px-8 md:h-[50px] rounded-[30px] flex justify-center items-center text-white" >view listing →</Link>
       </div>

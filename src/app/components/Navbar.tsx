@@ -4,17 +4,19 @@
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 
-import { Show, SignInButton, SignUpButton, UserButton } from '@clerk/nextjs'
+import { Show, SignInButton, useUser, SignUpButton, UserButton } from '@clerk/nextjs'
 import brandLogo from "../../../public/zenit.png";
 import { useEffect, useState } from "react";
 import { Button } from "./ui/button";
+import {MoveRight} from 'lucide-react'
 
 
-export default function Navbar() {
+export default  function Navbar() {
   const pathname = usePathname();
   const router = useRouter()
   const [targetSection, setTargetSection] = useState<string | null>(null);
-
+  const {user, isLoaded, isSignedIn} = useUser()
+  const isAdmin = user?.publicMetadata?.role === "admin";
   const navLink = [
     {
       name: "Home",
@@ -62,6 +64,7 @@ export default function Navbar() {
     }
 
   }, [targetSection, pathname])
+   
   return (
     <nav className="fixed top-4 w-full z-50">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -93,18 +96,27 @@ export default function Navbar() {
           </div>
 
           {/* Authentication */}
-          <div className="flex items-center space-x-4">
-            <Show when="signed-out">
-            <SignInButton mode="modal">
-              <Button className="bg-green-600 px-12 py-5 rounded-[30] transition-colors cursor-pointer">
-                Sign In
-              </Button>
-            </SignInButton>
+          <div className="flex items-center md:-mr-10  ">
+            {
+              !isLoaded ? null : !isSignedIn ? (
+                <SignInButton mode="modal">
+                <Button className="bg-green-600 px-12 py-5 rounded-[30px] transition-colors cursor-pointer">
+                  Sign In
+                </Button>
+              </SignInButton>
+              ) :(
+                <div className="flex gap-10">
+                <UserButton />
 
-        </Show>
-        <Show when={'signed-in'}>
-          <UserButton/>
-        </Show>
+                {isAdmin && (
+                  <Link href="/admin/overview" className="flex justify-center items-center font-sans text-md gap-2 bg-green-500 rounded-2xl py-2 px-4  text-white">
+                    Dashboard
+                    <MoveRight/>
+                  </Link>
+                )}
+              </div>
+              )
+            }        
 
           </div>
 

@@ -1,7 +1,6 @@
 datasource db {
   provider = "postgresql"
 }
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -24,6 +23,9 @@ model Property {
   squareFeet  Int
   listingDate DateTime @default(now())
   media       Media[]
+  enquiry     Enquiry[]
+  siteVisit  SiteVisitRequest[]
+
 }
 
 model Media {
@@ -33,5 +35,60 @@ model Media {
   order         Int
   propertyId    String
   property      Property @relation(fields: [propertyId], references: [id])
+  
+}
+enum  Status {
+  New
+  Contacted
+  Converted
+  SiteVisitRequest
+  Closed
+}
+model Enquiry {
+  id             String @id @default(cuid())
+  name           String
+  phoneNumber    String
+  email          String
+  propertyId     String     @unique
+  property       Property @relation(fields: [propertyId], references: [id])
+  assigned       Employee []   
+  status         Status   @default(New)
+  source         String
+  createdAt      DateTime  @default(now())
+
+
+}
+enum EmployeeStatus {
+  active
+  inactive
+}
+model Employee  {
+  id            String @id 
+  name          String
+  enquiryId     String
+  enquiry        Enquiry  @relation(fields: [enquiryId], references: [id])
+  phoneNumber   String
+  status        EmployeeStatus
+  siteVisitRequest SiteVisitRequest[]
+
+
+
+}
+enum SiteVisitStatus {
+  Pending
+  Confirm
+  Completed
+  Rescheduled
+  Cancelled
+
+}
+model SiteVisitRequest {
+  id            String @id  @default(cuid())
+  status        SiteVisitStatus @default(Pending)
+  scheduleTime  DateTime
+  propertyId    String  @unique
+  property      Property @relation(fields: [propertyId], references: [id])
+  employeeId    String
+  employee      Employee @relation(fields: [employeeId], references: [id])
 }
 
